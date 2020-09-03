@@ -5,6 +5,8 @@ const passport = require('passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 var path = require("path");
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
@@ -12,7 +14,7 @@ const app = express();
 require('./config/passport')(passport);
 
 // DB Config
-const db = require('./config/keys').MongoURI;
+const db = process.env.MONGO_URI;
 
 // Connect to MongoDB
 mongoose
@@ -56,7 +58,7 @@ app.use(passport.session());
 app.use(flash());
 
 // Global variables
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
   res.locals.error = req.flash('error');
@@ -67,6 +69,8 @@ app.use(function(req, res, next) {
 app.use('/', require('./routes/index.js'));
 app.use('/users', require('./routes/users.js'));
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
-app.listen(PORT);
+app.listen(PORT, () => {
+  console.log(`Server started on PORT ${PORT}`)
+});
