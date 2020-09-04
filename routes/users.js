@@ -26,7 +26,7 @@ router.post('/register', (req, res) => {
   }
 
   if (errors.length > 0) {
-    res.render('register', {
+    res.render('signup', {
       errors,
       name,
       team_name,
@@ -41,7 +41,7 @@ router.post('/register', (req, res) => {
     User.findOne({ email: email }).then(user => {
       if (user) {
         errors.push({ msg: 'Email already exists' });
-        res.render('register', {
+        res.render('signup', {
           errors,
           name,
           team_name,

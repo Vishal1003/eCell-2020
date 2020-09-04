@@ -14,7 +14,7 @@ const app = express();
 require('./config/passport')(passport);
 
 // DB Config
-const db = require('./config/keys').MongoURI;
+const db = process.env.MONGO_URI;
 // Connect to MongoDB
 mongoose
   .connect(
@@ -71,5 +71,5 @@ app.use('/users', require('./routes/users.js'));
 const PORT = process.env.PORT;
 
 app.listen(PORT, () => {
-  console.log(`Server started on PORT ${PORT}`)
+  console.log(`Server started on PORT http://localhost:${PORT}/`)
 });
