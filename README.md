@@ -1,7 +1,5 @@
 # eCell NSUT 2020 Official Site
 
-#### The original website is hosted here : http://ecellnsut.com/
-
 ## eCell NSUT
 
 One might think that the capabilities of an entrepreneurship cell is limited to gathering accolades in competitions, but here at eCell NSUT, we take it as a challenge to propel our ideas to greater heights. We take initiatives to develop and adapt ourselves into the changing popular market culture, while having a strong hold over our core and foundational values, irrespective of our predicament.
