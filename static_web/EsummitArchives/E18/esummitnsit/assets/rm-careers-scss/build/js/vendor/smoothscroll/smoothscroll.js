@@ -1,1 +1,0 @@
-jQuery(document).ready(function(t){t('a[href*="#"]').bind("click",function(n){n.preventDefault();var o=t(this).attr("href");return t("html, body").stop().animate({scrollTop:t(o).offset().top},950,function(){location.hash=o}),!1})});
