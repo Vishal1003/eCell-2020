@@ -155,13 +155,11 @@
           <p class="task-brief coves-font"><%= tasks[i].name %></p>
 
           <div class="input-group">
-            <button class="btn know-more">
-              <a
-                style="text-decoration: none; color: inherit"
-                href="/tasks/<%= tasks[i]._id %>"
-              >
-                View Details
-              </a>
+            <button
+              class="btn know-more"
+              onclick="location.href='/tasks/<%= tasks[i]._id %>'"
+            >
+              View Details
             </button>
           </div>
         </div>
@@ -170,28 +168,39 @@
     </div>
 
     <% if(user && user.isAdmin){ %>
-      <div class="tasks-container" style="border: 2px solid brown; padding: 20px; padding-bottom: 50px; text-align: center;">
-        <div class="tasks-title-container">
-          <h1 class="tasks-title">
-            Admin <span class="accent-text-stroke">Rights</span>
-          </h1>
-        </div>
-  
-        <div>
-           <div class="task-container" style="text-align: center;">
-              <div style="width: 50vw;
-              margin: auto;
-              "> 
-              <p class="dec-info coves-font">Add a new task in the database (will reflect to all users!)</p> 
-                  
-              <button class="btn know-more" style="margin: 0 !important; width: 30vw !important;" onclick="location.href='/users/addTask'">
-                Create a New Task 
-              </button>
-              
-              </div>
+    <div
+      class="tasks-container"
+      style="
+        border: 2px solid brown;
+        padding: 20px;
+        padding-bottom: 50px;
+        text-align: center;
+      "
+    >
+      <div class="tasks-title-container">
+        <h1 class="tasks-title">
+          Admin <span class="accent-text-stroke">Rights</span>
+        </h1>
+      </div>
+
+      <div>
+        <div class="task-container" style="text-align: center">
+          <div style="width: 50vw; margin: auto">
+            <p class="dec-info coves-font">
+              Add a new task in the database (will reflect to all users!)
+            </p>
+
+            <button
+              class="btn know-more"
+              style="margin: 0 !important; width: 30vw !important"
+              onclick="location.href='/users/addTask'"
+            >
+              Create a New Task
+            </button>
           </div>
         </div>
       </div>
+    </div>
     <% } %>
   </div>
 </div>

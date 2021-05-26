@@ -153,9 +153,12 @@
     <div class="nav-links ml-auto">
       <a href="/">Home</a>
       <a href="/tasks">Tasks</a>
-      <a href="#timeline">TimeLine</a>
-      <% if(typeof user !== 'undefined'){ %>
+      <a href="/#timeline">TimeLine</a>
+      <% if(typeof user !== 'undefined'){ %> <% if(!user.isAdmin){ %>
       <a href="/users/dashboard">Dashboard</a>
+      <% } else { %>
+      <a href="/users/dashboard">Admin </a>
+      <% } %>
       <a href="/users/logout">Logout</a>
       <% } %> <% if(typeof user === 'undefined'){ %>
       <a href="/users/login">Login</a>
@@ -186,9 +189,15 @@
       <div class="col-md-6">
         <h4 class="leader-name coves-font box-border"><span style="font-size: large">Email : </span> <%= user.email %></h3>
       </div>
+      <% if(!user.isAdmin) { %>
       <div class="col-md-6">
         <h4 class="team-name coves-font box-border"><span style="font-size: large">Points : </span> <%= user.score %> </h3>
       </div>
+      <% } else { %>
+        <div class="col-md-6">
+          <h4 class="team-name coves-font box-border"><span style="font-size: large">Admin Rights : </span> All </h3>
+        </div>
+      <% } %>
     </div>
 
     <div class="row">
@@ -318,6 +327,14 @@
                 
             <button class="btn know-more" style="margin: 0 !important; width: 30vw !important;" onclick="location.href='/users/addTask'">
               Create a New Task 
+            </button>
+
+            <button class="btn know-more" style="margin-top: 4 !important; width: 30vw !important;" onclick="location.href='/tasks'">
+              Edit a Task 
+            </button>
+
+            <button class="btn know-more" style="margin-top: 4 !important; width: 30vw !important;" onclick="location.href='/tasks'">
+              Review Submission & Add Score
             </button>
             
             </div>

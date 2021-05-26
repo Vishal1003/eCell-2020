@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const Task = require("../models/Task");
 const Submission = require("../models/Submission");
+const mongoose = require("mongoose");
 
 exports.getLogin = (req, res, next) => {
   res.render("login");
@@ -118,7 +119,8 @@ exports.getCreateTask = async (req, res, next) => {
     req.flash("error_msg", "No such task exists in the database");
     res.redirect("/tasks");
   } else {
-    res.render("createTask", { task });
+    // console.log(task);
+    return res.render("createTask", { task });
   }
   res.render("createTask");
 };
@@ -140,11 +142,9 @@ exports.postCreateTask = async (req, res, next) => {
 };
 
 exports.putEditTask = async (req, res, next) => {
-  const id = req.params.id;
+  const id =  mongoose.Types.ObjectId(req.params.id);
   const { name, description, guidelines, points, deadline } = req.body;
-
-  let task = await Task.findById({ id });
-
+  let task = await Task.findById(id);
   let updates = {};
   updates.name = name ?? task.name;
   updates.description = description ?? task.description;
@@ -156,10 +156,10 @@ exports.putEditTask = async (req, res, next) => {
 
   if (!task) {
     req.flash("error_msg", "Error Occurred!");
-    res.redirect("/home/tasks");
+    res.redirect("/tasks");
   } else {
     req.flash("success_msg", "Task Updated Successfully");
-    res.redirect("/home/tasks");
+    res.redirect("/tasks");
   }
 };
 

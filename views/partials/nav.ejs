@@ -20,8 +20,11 @@
     <a href="/">Home</a>
     <a href="/tasks">Tasks</a>
     <a href="/#timeline">TimeLine</a>
-    <% if(typeof user !== 'undefined'){ %>
+    <% if(typeof user !== 'undefined'){ %> <% if(!user.isAdmin){ %>
     <a href="/users/dashboard">Dashboard</a>
+    <% } else { %>
+    <a href="/users/dashboard">Admin </a>
+    <% } %>
     <a href="/users/logout">Logout</a>
     <% } %> <% if(typeof user === 'undefined'){ %>
     <a href="/users/login">Login</a>

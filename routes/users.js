@@ -23,6 +23,8 @@ router.get("/addTask", ensureIsAdmin, controller.getCreateTask);
 router.post("/addTask", ensureIsAdmin, controller.postCreateTask);
 router.delete("/addTask/:id", ensureIsAdmin, controller.deleteTask);
 
+router.get("/editTask/:id", ensureIsAdmin, controller.getCreateTask);
+router.put("/editTask/:id", ensureIsAdmin, controller.putEditTask);
 // SUBMISSION ENDPOINTS
 router.post("/submitTask/:id", ensureAuthenticated, controller.submitTask);
 router.put("/submitTask/:id", ensureAuthenticated, controller.editSubmitTask);

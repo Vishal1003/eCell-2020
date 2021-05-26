@@ -112,7 +112,7 @@
   <section class="tasks-main-section">
     <% if(user && user.isAdmin){ %>
     <div style="margin-left: auto">
-      <form action="" method="GET" style="display: inline">
+      <form action="/users/editTask/<%= task._id %>" method="GET" style="display: inline">
         <button
           style="background: none; border: none; padding: 0; outline: none"
           type="submit"
